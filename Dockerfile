@@ -16,7 +16,7 @@ RUN mkdir -p /etc/apt/keyrings \
     && chmod go+r /etc/apt/keyrings/microsoft.gpg \
     && echo 'deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ bullseye main'>/etc/apt/sources.list.d/azure-cli.list
 
-RUN apt update && apt install -yq jq tzdata vim unzip azure-cli ibssl-dev libffi-dev python3-dev build-essential curl wget python3-pip \
+RUN apt update && apt install -yq jq tzdata vim unzip azure-cli bssl-dev libffi-dev python3-dev build-essential curl wget python3-pip \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archive/*.deb
 
 

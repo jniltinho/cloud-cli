@@ -1,4 +1,4 @@
-FROM gcr.io/google.com/cloudsdktool/google-cloud-cli:488.0.0-slim
+FROM gcr.io/google.com/cloudsdktool/google-cloud-cli:slim
 
 ENV TZ America/Sao_Paulo
 ENV SHELL=/bin/bash
@@ -14,10 +14,9 @@ COPY requirements.txt /requirements.txt
 RUN mkdir -p /etc/apt/keyrings \
     && curl -sLS https://packages.microsoft.com/keys/microsoft.asc|gpg --dearmor|tee /etc/apt/keyrings/microsoft.gpg > /dev/null \
     && chmod go+r /etc/apt/keyrings/microsoft.gpg \
-    && echo 'deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ bullseye main'>/etc/apt/sources.list.d/azure-cli.list
+    && echo 'deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ bookworm main'>/etc/apt/sources.list.d/azure-cli.list
 
-RUN apt-get update && apt-get install -yq libssl-dev libffi-dev python3-dev build-essential curl wget python3-pip \
-    && apt-get install -yq jq tzdata vim unzip azure-cli \
+RUN apt update && apt install -yq jq tzdata vim unzip azure-cli libssl-dev libffi-dev python3-dev build-essential curl wget python3-pip \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archive/*.deb
 
 

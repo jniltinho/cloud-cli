@@ -30,7 +30,7 @@ RUN curl -LO --progress-bar https://github.com/digitalocean/doctl/releases/downl
     && tar xf doctl-1.100.0-linux-amd64.tar.gz \
     && mv doctl /usr/local/bin
 
-RUN python3 -m pip install --no-cache-dir -r /requirements.txt
+RUN python3 -m pip install --no-cache-dir -r /requirements.txt --break-system-packages
 
 WORKDIR /root
 

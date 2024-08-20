@@ -1,7 +1,9 @@
 FROM gcr.io/google.com/cloudsdktool/google-cloud-cli:slim
 
+ENV DEBIAN_FRONTEND noninteractive
+ENV SHELL /bin/bash
 ENV TZ America/Sao_Paulo
-ENV SHELL=/bin/bash
+
 ENV PY_COLORS 1
 ENV FORCE_COLOR 1
 ENV LANG en_US.UTF-8
@@ -9,7 +11,7 @@ WORKDIR /tmp
 
 RUN mv /bin/sh /bin/sh.old && cp /bin/bash /bin/sh
 COPY ./bashrc /root/.bashrc
-COPY requirements.txt /requirements.txt
+COPY ./requirements.txt /requirements.txt
 
 RUN mkdir -p /etc/apt/keyrings \
     && curl -sLS https://packages.microsoft.com/keys/microsoft.asc|gpg --dearmor|tee /etc/apt/keyrings/microsoft.gpg > /dev/null \

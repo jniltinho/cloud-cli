@@ -1,4 +1,4 @@
-FROM gcr.io/google.com/cloudsdktool/google-cloud-cli:slim
+FROM gcr.io/google.com/cloudsdktool/google-cloud-cli:488.0.0-slim
 
 ENV TZ America/Sao_Paulo
 ENV SHELL=/bin/bash
